@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>电影详情</title>
+</head>
+<body>
+    {% for i in detail %}
+        <h2>{{ i.name }}</h2><br/>
+        <a href="#"><img src="{{ i.pic }}"></a><br/>
+        上映年份：{{ i.year }}
+        类型：{{ i.type }}
+        评分：{{ i.score }}<br/><br/>
+        导演：{{ i.director }}
+        编剧：{{ i.screenwriter }}
+        主演：{{ i.actors }}<br/><br/>
+        地区：{{ i.country }}
+        语言：{{ i.language }}
+        时长：{{ i.time }}
+        <br/>
+    {% endfor %}
+<br/><br/>
+
+请输入您的评分：<br/><br/>
+<form method="post">
+{%csrf_token%}
+    <input type="text" name="rate" placeholder="请评分"><br>
+    <input type="submit" value="提交"><br>
+</form>
+
+
+猜您喜欢:<br/><br/>
+{% for i in rec %}
+    {{ i.name }}
+    <a href="#"><img src="{{ i.pic }}"></a><br/>
+    上映年份：{{ i.year }}
+    类型：{{ i.type }}<br/><br/>
+{% endfor %}
+
+</body>
+</html>
